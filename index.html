@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="3D-Druck Kostenrechner – Berechne Material-, Strom- und Arbeitskosten für dein 3D-Druck-Projekt und erhalte empfohlene Verkaufspreise." />
+  <meta name="description" content="3D-Druck Kostenrechner – Berechne Material-, Strom- und Arbeitskosten für dein 3D-Druck-Projekt und erhalte empfohlene Verkaufspreise für deinen Shopify Store." />
   <title>3D-Druck Kostenrechner</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -19,7 +19,7 @@
         <svg class="header__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
         <h1 class="header__title">3D-Druck Kostenrechner</h1>
       </div>
-      <p class="header__subtitle">Berechne deine Selbstkosten und empfohlene Verkaufspreise in Echtzeit</p>
+      <p class="header__subtitle">Berechne Selbstkosten & Verkaufspreise für deinen Shopify Store</p>
     </div>
   </header>
 
@@ -28,71 +28,126 @@
     <div class="dashboard">
 
       <!-- ===== LEFT COLUMN — Inputs ===== -->
-      <section class="col col--inputs" aria-labelledby="section-inputs">
-        <div class="card">
-          <h2 class="card__heading" id="section-inputs">
-            <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-            Projektdetails & Eingaben
-          </h2>
+      <div class="col col--inputs">
 
+        <!-- Card 1: Material & Druck -->
+        <section class="card" aria-labelledby="section-material">
+          <h2 class="card__heading" id="section-material">
+            <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            Material & Druck
+          </h2>
           <div class="form-grid">
-            <!-- 1. Filamentpreis -->
             <div class="field">
               <label class="field__label" for="filamentPrice">Filamentpreis pro kg (€)</label>
               <input class="field__input" type="number" id="filamentPrice" value="22.50" min="0" step="0.01" />
             </div>
-
-            <!-- 2. Verbrauchtes Filament -->
             <div class="field">
               <label class="field__label" for="filamentUsed">Verbrauchtes Filament inkl. Support (g)</label>
               <input class="field__input" type="number" id="filamentUsed" value="120" min="0" step="1" />
             </div>
-
-            <!-- 3. Druckzeit -->
             <div class="field">
-              <label class="field__label" for="printTime">Druckzeit in Stunden</label>
-              <input class="field__input" type="number" id="printTime" value="4.5" min="0" step="0.1" />
+              <label class="field__label" for="printTimeHours">Druckzeit – Stunden</label>
+              <input class="field__input" type="number" id="printTimeHours" value="4" min="0" step="1" />
             </div>
-
-            <!-- 4. Stromverbrauch -->
             <div class="field">
-              <label class="field__label" for="powerConsumption">Stromverbrauch des Druckers (Watt)</label>
-              <input class="field__input" type="number" id="powerConsumption" value="150" min="0" step="1" />
+              <label class="field__label" for="printTimeMinutes">Druckzeit – Minuten</label>
+              <input class="field__input" type="number" id="printTimeMinutes" value="30" min="0" max="59" step="1" />
             </div>
-
-            <!-- 5. Strompreis -->
+            <div class="field">
+              <label class="field__label" for="powerConsumption">Stromverbrauch Drucker (Watt)</label>
+              <input class="field__input" type="number" id="powerConsumption" value="100" min="0" step="1" />
+            </div>
             <div class="field">
               <label class="field__label" for="electricityPrice">Strompreis pro kWh (€)</label>
               <input class="field__input" type="number" id="electricityPrice" value="0.35" min="0" step="0.01" />
             </div>
+          </div>
+        </section>
 
-            <!-- 6. Arbeitszeit -->
+        <!-- Card 2: Arbeitszeit & Extras -->
+        <section class="card" aria-labelledby="section-labor">
+          <h2 class="card__heading" id="section-labor">
+            <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Arbeitszeit & Extras
+          </h2>
+          <div class="form-grid">
             <div class="field">
               <label class="field__label" for="laborMinutes">Arbeitszeit Vor-/Nachbereitung (Min.)</label>
               <input class="field__input" type="number" id="laborMinutes" value="10" min="0" step="1" />
             </div>
-
-            <!-- 7. Stundenlohn -->
             <div class="field">
               <label class="field__label" for="hourlyWage">Gewünschter Stundenlohn (€)</label>
               <input class="field__input" type="number" id="hourlyWage" value="25.00" min="0" step="0.50" />
             </div>
-
-            <!-- 8. Zusätzliche Kosten -->
             <div class="field">
-              <label class="field__label" for="extraCosts">Zusätzliche Kosten (€)</label>
+              <label class="field__label" for="printerCost">Druckerpreis (€) <small>Bambu Lab A1 + AMS Lite</small></label>
+              <input class="field__input" type="number" id="printerCost" value="339" min="0" step="1" />
+            </div>
+            <div class="field">
+              <label class="field__label" for="failureRate">Ausschussrate / Fehldrucke (%)</label>
+              <input class="field__input" type="number" id="failureRate" value="5" min="0" max="50" step="1" />
+            </div>
+            <div class="field">
+              <label class="field__label" for="extraCosts">Zusätzliche Kosten (€) <small>Hardware, Magnete, Verpackung</small></label>
               <input class="field__input" type="number" id="extraCosts" value="1.50" min="0" step="0.10" />
             </div>
+            <div class="field">
+              <label class="field__label" for="shippingCost">Versandkosten (€)</label>
+              <input class="field__input" type="number" id="shippingCost" value="4.99" min="0" step="0.01" />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        <!-- Card 3: Shopify & Steuern -->
+        <section class="card" aria-labelledby="section-shopify">
+          <h2 class="card__heading" id="section-shopify">
+            <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            Shopify & Steuern
+          </h2>
+          <div class="form-grid">
+            <div class="field">
+              <label class="field__label" for="shopifyFeePercent">Shopify Transaktionsgebühr (%)</label>
+              <input class="field__input" type="number" id="shopifyFeePercent" value="5" min="0" max="20" step="0.1" />
+            </div>
+            <div class="field">
+              <label class="field__label" for="shopifyMonthly">Shopify Monatsbeitrag (€)</label>
+              <input class="field__input" type="number" id="shopifyMonthly" value="5.00" min="0" step="0.50" />
+            </div>
+            <div class="field">
+              <label class="field__label" for="estimatedSalesMonth">Geschätzte Verkäufe / Monat</label>
+              <input class="field__input" type="number" id="estimatedSalesMonth" value="20" min="1" step="1" />
+            </div>
+            <div class="field">
+              <label class="field__label" for="taxRate">MwSt-Satz (%)</label>
+              <input class="field__input" type="number" id="taxRate" value="19" min="0" max="30" step="1" />
+            </div>
+          </div>
+        </section>
+
+        <!-- Card 4: Gewinn-Slider -->
+        <section class="card card--slider" aria-labelledby="section-margin">
+          <h2 class="card__heading" id="section-margin">
+            <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            Gewünschte Gewinnmarge
+          </h2>
+          <div class="slider-wrap">
+            <input class="slider" type="range" id="marginSlider" min="0" max="80" value="40" step="1" />
+            <div class="slider-labels">
+              <span>0 %</span>
+              <span class="slider-value" id="marginDisplay">40 %</span>
+              <span>80 %</span>
+            </div>
+          </div>
+        </section>
+
+      </div>
 
       <!-- ===== RIGHT COLUMN — Results ===== -->
-      <section class="col col--results" aria-labelledby="section-results">
+      <div class="col col--results">
 
         <!-- Cost Breakdown -->
-        <div class="card">
-          <h2 class="card__heading" id="section-results">
+        <section class="card" aria-labelledby="section-costs">
+          <h2 class="card__heading" id="section-costs">
             <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
             Kostenaufstellung
           </h2>
@@ -110,45 +165,65 @@
               <span class="cost-list__value" id="laborCost">0,00 €</span>
             </li>
             <li class="cost-list__item">
+              <span class="cost-list__label">Druckerverschleiß</span>
+              <span class="cost-list__value" id="depreciationCost">0,00 €</span>
+            </li>
+            <li class="cost-list__item">
               <span class="cost-list__label">Zusätzliche Kosten</span>
               <span class="cost-list__value" id="extraCostDisplay">0,00 €</span>
+            </li>
+            <li class="cost-list__item">
+              <span class="cost-list__label">Ausschuss-Aufschlag</span>
+              <span class="cost-list__value" id="failureSurcharge">0,00 €</span>
             </li>
             <li class="cost-list__item cost-list__item--total">
               <span class="cost-list__label">Selbstkosten (Gesamt)</span>
               <span class="cost-list__value" id="totalCost">0,00 €</span>
             </li>
           </ul>
-        </div>
+        </section>
 
-        <!-- Selling Prices -->
-        <div class="card">
-          <h2 class="card__heading">
-            <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-            Empfohlene Verkaufspreise
+        <!-- Final Price -->
+        <section class="card card--highlight" aria-labelledby="section-price">
+          <h2 class="card__heading" id="section-price">
+            <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+            Verkaufspreis-Berechnung
           </h2>
-          <div class="price-grid" id="priceGrid">
-            <div class="price-card price-card--competitive" id="priceCompetitive">
-              <span class="price-card__badge">Wettbewerbsfähig</span>
-              <span class="price-card__margin">25 % Marge</span>
-              <span class="price-card__value" id="priceVal25">0,00 €</span>
-            </div>
-            <div class="price-card price-card--standard" id="priceStandard">
-              <span class="price-card__badge">Standard</span>
-              <span class="price-card__margin">40 % Marge</span>
-              <span class="price-card__value" id="priceVal40">0,00 €</span>
-            </div>
-            <div class="price-card price-card--premium" id="pricePremium">
-              <span class="price-card__badge">Premium</span>
-              <span class="price-card__margin">60 % Marge</span>
-              <span class="price-card__value" id="priceVal60">0,00 €</span>
-            </div>
-            <div class="price-card price-card--luxury" id="priceLuxury">
-              <span class="price-card__badge">Luxus</span>
-              <span class="price-card__margin">80 % Marge</span>
-              <span class="price-card__value" id="priceVal80">0,00 €</span>
-            </div>
+          <ul class="cost-list">
+            <li class="cost-list__item">
+              <span class="cost-list__label">Netto-Verkaufspreis</span>
+              <span class="cost-list__value" id="nettoPrice">0,00 €</span>
+            </li>
+            <li class="cost-list__item">
+              <span class="cost-list__label">+ Versandkosten</span>
+              <span class="cost-list__value" id="shippingDisplay">0,00 €</span>
+            </li>
+            <li class="cost-list__item">
+              <span class="cost-list__label">+ Shopify Gebühr (<span id="feePercentLabel">5</span> %)</span>
+              <span class="cost-list__value" id="shopifyFeeDisplay">0,00 €</span>
+            </li>
+            <li class="cost-list__item">
+              <span class="cost-list__label">+ anteil. Shopify Monat</span>
+              <span class="cost-list__value" id="shopifyMonthlyShare">0,00 €</span>
+            </li>
+            <li class="cost-list__item">
+              <span class="cost-list__label">MwSt (<span id="taxRateLabel">19</span> %)</span>
+              <span class="cost-list__value" id="taxAmount">0,00 €</span>
+            </li>
+          </ul>
+
+          <!-- Big final number -->
+          <div class="final-price">
+            <span class="final-price__label">Brutto-Verkaufspreis (inkl. MwSt)</span>
+            <span class="final-price__value" id="bruttoPrice">0,00 €</span>
           </div>
-        </div>
+
+          <!-- Profit -->
+          <div class="profit-badge" id="profitBadge">
+            <span class="profit-badge__label">Dein Gewinn pro Stück</span>
+            <span class="profit-badge__value" id="profitPerUnit">0,00 €</span>
+          </div>
+        </section>
 
         <!-- Print Button -->
         <button class="btn btn--print" id="btnPrint" type="button">
@@ -156,11 +231,11 @@
           Drucken / als PDF speichern
         </button>
 
-      </section>
+      </div>
     </div>
   </main>
 
-  <!-- ===== Footer (hidden in print) ===== -->
+  <!-- ===== Footer ===== -->
   <footer class="footer no-print" id="footer">
     <p>&copy; 2026 3D-Druck Kostenrechner – Alle Angaben ohne Gewähr.</p>
   </footer>
