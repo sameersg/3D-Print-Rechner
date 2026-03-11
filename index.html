@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="3D-Druck Kostenrechner – Berechne Material-, Strom- und Arbeitskosten für dein 3D-Druck-Projekt und erhalte empfohlene Verkaufspreise." />
+  <title>3D-Druck Kostenrechner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <div class="header__logo">
+        <svg class="header__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        <h1 class="header__title">3D-Druck Kostenrechner</h1>
+      </div>
+      <p class="header__subtitle">Berechne deine Selbstkosten und empfohlene Verkaufspreise in Echtzeit</p>
+    </div>
+  </header>
+
+  <!-- ===== Main Content ===== -->
+  <main class="main" id="main">
+    <div class="dashboard">
+
+      <!-- ===== LEFT COLUMN — Inputs ===== -->
+      <section class="col col--inputs" aria-labelledby="section-inputs">
+        <div class="card">
+          <h2 class="card__heading" id="section-inputs">
+            <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            Projektdetails & Eingaben
+          </h2>
+
+          <div class="form-grid">
+            <!-- 1. Filamentpreis -->
+            <div class="field">
+              <label class="field__label" for="filamentPrice">Filamentpreis pro kg (€)</label>
+              <input class="field__input" type="number" id="filamentPrice" value="22.50" min="0" step="0.01" />
+            </div>
+
+            <!-- 2. Verbrauchtes Filament -->
+            <div class="field">
+              <label class="field__label" for="filamentUsed">Verbrauchtes Filament inkl. Support (g)</label>
+              <input class="field__input" type="number" id="filamentUsed" value="120" min="0" step="1" />
+            </div>
+
+            <!-- 3. Druckzeit -->
+            <div class="field">
+              <label class="field__label" for="printTime">Druckzeit in Stunden</label>
+              <input class="field__input" type="number" id="printTime" value="4.5" min="0" step="0.1" />
+            </div>
+
+            <!-- 4. Stromverbrauch -->
+            <div class="field">
+              <label class="field__label" for="powerConsumption">Stromverbrauch des Druckers (Watt)</label>
+              <input class="field__input" type="number" id="powerConsumption" value="150" min="0" step="1" />
+            </div>
+
+            <!-- 5. Strompreis -->
+            <div class="field">
+              <label class="field__label" for="electricityPrice">Strompreis pro kWh (€)</label>
+              <input class="field__input" type="number" id="electricityPrice" value="0.35" min="0" step="0.01" />
+            </div>
+
+            <!-- 6. Arbeitszeit -->
+            <div class="field">
+              <label class="field__label" for="laborMinutes">Arbeitszeit Vor-/Nachbereitung (Min.)</label>
+              <input class="field__input" type="number" id="laborMinutes" value="10" min="0" step="1" />
+            </div>
+
+            <!-- 7. Stundenlohn -->
+            <div class="field">
+              <label class="field__label" for="hourlyWage">Gewünschter Stundenlohn (€)</label>
+              <input class="field__input" type="number" id="hourlyWage" value="25.00" min="0" step="0.50" />
+            </div>
+
+            <!-- 8. Zusätzliche Kosten -->
+            <div class="field">
+              <label class="field__label" for="extraCosts">Zusätzliche Kosten (€)</label>
+              <input class="field__input" type="number" id="extraCosts" value="1.50" min="0" step="0.10" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== RIGHT COLUMN — Results ===== -->
+      <section class="col col--results" aria-labelledby="section-results">
+
+        <!-- Cost Breakdown -->
+        <div class="card">
+          <h2 class="card__heading" id="section-results">
+            <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            Kostenaufstellung
+          </h2>
+          <ul class="cost-list" id="costList">
+            <li class="cost-list__item">
+              <span class="cost-list__label">Materialkosten</span>
+              <span class="cost-list__value" id="materialCost">0,00 €</span>
+            </li>
+            <li class="cost-list__item">
+              <span class="cost-list__label">Stromkosten</span>
+              <span class="cost-list__value" id="electricityCost">0,00 €</span>
+            </li>
+            <li class="cost-list__item">
+              <span class="cost-list__label">Arbeitskosten</span>
+              <span class="cost-list__value" id="laborCost">0,00 €</span>
+            </li>
+            <li class="cost-list__item">
+              <span class="cost-list__label">Zusätzliche Kosten</span>
+              <span class="cost-list__value" id="extraCostDisplay">0,00 €</span>
+            </li>
+            <li class="cost-list__item cost-list__item--total">
+              <span class="cost-list__label">Selbstkosten (Gesamt)</span>
+              <span class="cost-list__value" id="totalCost">0,00 €</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Selling Prices -->
+        <div class="card">
+          <h2 class="card__heading">
+            <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            Empfohlene Verkaufspreise
+          </h2>
+          <div class="price-grid" id="priceGrid">
+            <div class="price-card price-card--competitive" id="priceCompetitive">
+              <span class="price-card__badge">Wettbewerbsfähig</span>
+              <span class="price-card__margin">25 % Marge</span>
+              <span class="price-card__value" id="priceVal25">0,00 €</span>
+            </div>
+            <div class="price-card price-card--standard" id="priceStandard">
+              <span class="price-card__badge">Standard</span>
+              <span class="price-card__margin">40 % Marge</span>
+              <span class="price-card__value" id="priceVal40">0,00 €</span>
+            </div>
+            <div class="price-card price-card--premium" id="pricePremium">
+              <span class="price-card__badge">Premium</span>
+              <span class="price-card__margin">60 % Marge</span>
+              <span class="price-card__value" id="priceVal60">0,00 €</span>
+            </div>
+            <div class="price-card price-card--luxury" id="priceLuxury">
+              <span class="price-card__badge">Luxus</span>
+              <span class="price-card__margin">80 % Marge</span>
+              <span class="price-card__value" id="priceVal80">0,00 €</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Print Button -->
+        <button class="btn btn--print" id="btnPrint" type="button">
+          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Drucken / als PDF speichern
+        </button>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- ===== Footer (hidden in print) ===== -->
+  <footer class="footer no-print" id="footer">
+    <p>&copy; 2026 3D-Druck Kostenrechner – Alle Angaben ohne Gewähr.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
