@@ -24,7 +24,7 @@
   const elPrinterCost      = document.getElementById('printerCost');         // €
   const elFailureRate      = document.getElementById('failureRate');         // %
   const elExtraCosts       = document.getElementById('extraCosts');          // €
-  const elShippingCost     = document.getElementById('shippingCost');        // €
+  const elPackagingCost    = document.getElementById('packagingCost');       // €
   const elShopifyFeePct    = document.getElementById('shopifyFeePercent');   // %
   const elShopifyMonthly   = document.getElementById('shopifyMonthly');      // €
   const elEstSalesMonth    = document.getElementById('estimatedSalesMonth'); // Stück/Monat
@@ -37,10 +37,10 @@
   const outLaborCost         = document.getElementById('laborCost');
   const outDepreciationCost  = document.getElementById('depreciationCost');
   const outExtraCost         = document.getElementById('extraCostDisplay');
+  const outPackagingCost     = document.getElementById('packagingCostDisplay');
   const outFailureSurcharge  = document.getElementById('failureSurcharge');
   const outTotalCost         = document.getElementById('totalCost');
   const outNettoPrice        = document.getElementById('nettoPrice');
-  const outShippingDisplay   = document.getElementById('shippingDisplay');
   const outShopifyFee        = document.getElementById('shopifyFeeDisplay');
   const outShopifyMonthShare = document.getElementById('shopifyMonthlyShare');
   const outTaxAmount         = document.getElementById('taxAmount');
@@ -80,7 +80,7 @@
     const printerCost         = getVal(elPrinterCost);           // €
     const failureRate         = getVal(elFailureRate);           // %
     const extraCosts          = getVal(elExtraCosts);            // €
-    const shippingCost        = getVal(elShippingCost);          // €
+    const packagingCost       = getVal(elPackagingCost);         // €
     const shopifyFeePct       = getVal(elShopifyFeePct);         // %
     const shopifyMonthly      = getVal(elShopifyMonthly);        // €
     const estSalesMonth       = Math.max(1, getVal(elEstSalesMonth)); // min 1
@@ -107,7 +107,8 @@
     const depreciationCost = (printerCost / PRINTER_LIFETIME_HOURS) * totalPrintTimeH;
 
     // Zwischensumme vor Ausschuss
-    const subtotal = materialCost + electricityCost + laborCost + depreciationCost + extraCosts;
+    // Versandmaterial (Karton, Polster, Klebeband) ist Teil der Selbstkosten
+    const subtotal = materialCost + electricityCost + laborCost + depreciationCost + extraCosts + packagingCost;
 
     // Ausschuss-Aufschlag = Zwischensumme * (Ausschussrate / 100)
     const failureSurcharge = subtotal * (failureRate / 100);
@@ -126,8 +127,8 @@
     // Anteilige Shopify-Monatsgebühr pro Bestellung
     const shopifyMonthShare = shopifyMonthly / estSalesMonth;
 
-    // Zwischensumme vor Shopify-Transaktionsgebühr
-    const subtotalBeforeFee = nettoPrice + shippingCost + shopifyMonthShare;
+    // Zwischensumme vor Shopify-Transaktionsgebühr (ohne Versand – der Kunde zahlt Versand separat)
+    const subtotalBeforeFee = nettoPrice + shopifyMonthShare;
 
     // Shopify Transaktionsgebühr (% vom Gesamtbetrag)
     // Formel: finalAmount = subtotalBeforeFee / (1 - feeRate), dann fee = finalAmount - subtotalBeforeFee
@@ -157,12 +158,12 @@
     outLaborCost.textContent        = formatEuro(laborCost);
     outDepreciationCost.textContent = formatEuro(depreciationCost);
     outExtraCost.textContent        = formatEuro(extraCosts);
+    outPackagingCost.textContent    = formatEuro(packagingCost);
     outFailureSurcharge.textContent = formatEuro(failureSurcharge);
     outTotalCost.textContent        = formatEuro(totalCost);
 
     // Verkaufspreis-Berechnung
     outNettoPrice.textContent        = formatEuro(nettoPrice);
-    outShippingDisplay.textContent   = formatEuro(shippingCost);
     outShopifyFee.textContent        = formatEuro(shopifyFeeAmount);
     outShopifyMonthShare.textContent = formatEuro(shopifyMonthShare);
     outTaxAmount.textContent         = formatEuro(taxAmount);
@@ -179,7 +180,7 @@
   const allInputs = [
     elFilamentPrice, elFilamentUsed, elPrintTimeHours, elPrintTimeMinutes,
     elPowerConsumption, elElectricityPrice, elLaborMinutes, elHourlyWage,
-    elPrinterCost, elFailureRate, elExtraCosts, elShippingCost,
+    elPrinterCost, elFailureRate, elExtraCosts, elPackagingCost,
     elShopifyFeePct, elShopifyMonthly, elEstSalesMonth, elTaxRate,
     elMarginSlider,
   ];

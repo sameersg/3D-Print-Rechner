@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="3D-Druck Kostenrechner – Berechne Material-, Strom- und Arbeitskosten für dein 3D-Druck-Projekt und erhalte empfohlene Verkaufspreise für deinen Shopify Store." />
+  <meta name="description"
+    content="3D-Druck Kostenrechner – Berechne Material-, Strom- und Arbeitskosten für dein 3D-Druck-Projekt und erhalte empfohlene Verkaufspreise für deinen Shopify Store." />
   <title>3D-Druck Kostenrechner</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
   <!-- ===== Header ===== -->
   <header class="header" id="header">
     <div class="header__inner">
       <div class="header__logo">
-        <svg class="header__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        <svg class="header__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z" />
+          <path d="M2 17l10 5 10-5" />
+          <path d="M2 12l10 5 10-5" />
+        </svg>
         <h1 class="header__title">3D-Druck Kostenrechner</h1>
       </div>
       <p class="header__subtitle">Berechne Selbstkosten & Verkaufspreise für deinen Shopify Store</p>
@@ -33,7 +41,11 @@
         <!-- Card 1: Material & Druck -->
         <section class="card" aria-labelledby="section-material">
           <h2 class="card__heading" id="section-material">
-            <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
+              <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
+            </svg>
             Material & Druck
           </h2>
           <div class="form-grid">
@@ -43,11 +55,11 @@
             </div>
             <div class="field">
               <label class="field__label" for="filamentUsed">Verbrauchtes Filament inkl. Support (g)</label>
-              <input class="field__input" type="number" id="filamentUsed" value="120" min="0" step="1" />
+              <input class="field__input" type="number" id="filamentUsed" value="20" min="0" step="1" />
             </div>
             <div class="field">
               <label class="field__label" for="printTimeHours">Druckzeit – Stunden</label>
-              <input class="field__input" type="number" id="printTimeHours" value="4" min="0" step="1" />
+              <input class="field__input" type="number" id="printTimeHours" value="0" min="0" step="1" />
             </div>
             <div class="field">
               <label class="field__label" for="printTimeMinutes">Druckzeit – Minuten</label>
@@ -59,7 +71,7 @@
             </div>
             <div class="field">
               <label class="field__label" for="electricityPrice">Strompreis pro kWh (€)</label>
-              <input class="field__input" type="number" id="electricityPrice" value="0.35" min="0" step="0.01" />
+              <input class="field__input" type="number" id="electricityPrice" value="0.25" min="0" step="0.01" />
             </div>
           </div>
         </section>
@@ -67,7 +79,11 @@
         <!-- Card 2: Arbeitszeit & Extras -->
         <section class="card" aria-labelledby="section-labor">
           <h2 class="card__heading" id="section-labor">
-            <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
             Arbeitszeit & Extras
           </h2>
           <div class="form-grid">
@@ -77,10 +93,11 @@
             </div>
             <div class="field">
               <label class="field__label" for="hourlyWage">Gewünschter Stundenlohn (€)</label>
-              <input class="field__input" type="number" id="hourlyWage" value="25.00" min="0" step="0.50" />
+              <input class="field__input" type="number" id="hourlyWage" value="15.00" min="0" step="0.50" />
             </div>
             <div class="field">
-              <label class="field__label" for="printerCost">Druckerpreis (€) <small>Bambu Lab A1 + AMS Lite</small></label>
+              <label class="field__label" for="printerCost">Druckerpreis (€) <small>Bambu Lab A1 + AMS
+                  Lite</small></label>
               <input class="field__input" type="number" id="printerCost" value="339" min="0" step="1" />
             </div>
             <div class="field">
@@ -88,12 +105,13 @@
               <input class="field__input" type="number" id="failureRate" value="5" min="0" max="50" step="1" />
             </div>
             <div class="field">
-              <label class="field__label" for="extraCosts">Zusätzliche Kosten (€) <small>Hardware, Magnete, Verpackung</small></label>
+              <label class="field__label" for="extraCosts">Zusätzliche Kosten (€) <small>Hardware, Magnete,
+                  Verpackung</small></label>
               <input class="field__input" type="number" id="extraCosts" value="1.50" min="0" step="0.10" />
             </div>
             <div class="field">
-              <label class="field__label" for="shippingCost">Versandkosten (€)</label>
-              <input class="field__input" type="number" id="shippingCost" value="4.99" min="0" step="0.01" />
+              <label class="field__label" for="packagingCost">Versandmaterial (€) <small>Karton, Polster, Klebeband</small></label>
+              <input class="field__input" type="number" id="packagingCost" value="1.00" min="0" step="0.10" />
             </div>
           </div>
         </section>
@@ -101,7 +119,11 @@
         <!-- Card 3: Shopify & Steuern -->
         <section class="card" aria-labelledby="section-shopify">
           <h2 class="card__heading" id="section-shopify">
-            <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+              <line x1="1" y1="10" x2="23" y2="10" />
+            </svg>
             Shopify & Steuern
           </h2>
           <div class="form-grid">
@@ -127,7 +149,11 @@
         <!-- Card 4: Gewinn-Slider -->
         <section class="card card--slider" aria-labelledby="section-margin">
           <h2 class="card__heading" id="section-margin">
-            <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+              <polyline points="17 6 23 6 23 12" />
+            </svg>
             Gewünschte Gewinnmarge
           </h2>
           <div class="slider-wrap">
@@ -148,7 +174,11 @@
         <!-- Cost Breakdown -->
         <section class="card" aria-labelledby="section-costs">
           <h2 class="card__heading" id="section-costs">
-            <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="1" x2="12" y2="23" />
+              <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+            </svg>
             Kostenaufstellung
           </h2>
           <ul class="cost-list" id="costList">
@@ -173,6 +203,10 @@
               <span class="cost-list__value" id="extraCostDisplay">0,00 €</span>
             </li>
             <li class="cost-list__item">
+              <span class="cost-list__label">Versandmaterial</span>
+              <span class="cost-list__value" id="packagingCostDisplay">0,00 €</span>
+            </li>
+            <li class="cost-list__item">
               <span class="cost-list__label">Ausschuss-Aufschlag</span>
               <span class="cost-list__value" id="failureSurcharge">0,00 €</span>
             </li>
@@ -186,7 +220,11 @@
         <!-- Final Price -->
         <section class="card card--highlight" aria-labelledby="section-price">
           <h2 class="card__heading" id="section-price">
-            <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+            <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" />
+              <line x1="7" y1="7" x2="7.01" y2="7" />
+            </svg>
             Verkaufspreis-Berechnung
           </h2>
           <ul class="cost-list">
@@ -194,10 +232,7 @@
               <span class="cost-list__label">Netto-Verkaufspreis</span>
               <span class="cost-list__value" id="nettoPrice">0,00 €</span>
             </li>
-            <li class="cost-list__item">
-              <span class="cost-list__label">+ Versandkosten</span>
-              <span class="cost-list__value" id="shippingDisplay">0,00 €</span>
-            </li>
+
             <li class="cost-list__item">
               <span class="cost-list__label">+ Shopify Gebühr (<span id="feePercentLabel">5</span> %)</span>
               <span class="cost-list__value" id="shopifyFeeDisplay">0,00 €</span>
@@ -227,7 +262,12 @@
 
         <!-- Print Button -->
         <button class="btn btn--print" id="btnPrint" type="button">
-          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 6 2 18 2 18 9" />
+            <path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2" />
+            <rect x="6" y="14" width="12" height="8" />
+          </svg>
           Drucken / als PDF speichern
         </button>
 
@@ -242,4 +282,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>
